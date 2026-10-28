@@ -18,7 +18,7 @@ export function mount(el, { data = defaultData } = {}) {
   el.classList.add('mi-kit');
   el.innerHTML = `
   <section class="mi-kit-card" aria-labelledby="mi-kit-calc">
-    <h2 id="mi-kit-calc">What does leaving cost?</h2>
+    <h2 id="mi-kit-calc">Exit fee calculator</h2>
     <form class="mi-kit-form" data-calc>
       <label>Cloud you are leaving
         <select name="provider">
