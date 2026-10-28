@@ -1,0 +1,16 @@
+name: Correction
+description: A price, exit program condition or Data Act statement is wrong or out of date
+labels: [correction]
+body:
+  - type: textarea
+    id: what
+    attributes:
+      label: What the kit says, and what it should say
+    validations:
+      required: true
+  - type: input
+    id: source
+    attributes:
+      label: Link to the provider's page or the legal text
+    validations:
+      required: true

@@ -1,0 +1,27 @@
+# Pulls egress prices and exit program conditions from the EU Cloud Price Index monthly.
+name: Refresh data
+on:
+  schedule:
+    - cron: '0 6 4 * *'
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  data:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 24
+      - run: npm run update-data
+      - run: npm test
+      - uses: peter-evans/create-pull-request@v7
+        with:
+          branch: data/refresh
+          commit-message: "data: monthly refresh from the EU Cloud Price Index"
+          title: "Monthly data refresh"
+          body: Copied from github.com/moveinfra/eu-cloud-prices by `scripts/update-data.mjs`. Check changed exit program conditions before merging.

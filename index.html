@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Cloud Switching Kit</title>
+  <meta name="description" content="What leaving AWS, Azure or Google Cloud costs in egress, how to get it waived, what the EU Data Act says, and a ready switching notice. Runs in your browser.">
+  <link rel="stylesheet" href="kit/kit.css">
+  <style>
+    :root { color-scheme: light dark; }
+    body { margin: 0; background: #FAF9F6; color: #161817; font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif; }
+    @media (prefers-color-scheme: dark) { body { background: #121413; color: #ECEDEB; } }
+    main { max-width: 980px; margin: 0 auto; padding: 40px 16px 64px; }
+    h1 { font-size: clamp(1.8rem, 4vw, 2.6rem); letter-spacing: -0.02em; margin: 0 0 10px; }
+    .lead { max-width: 62ch; opacity: .8; margin: 0 0 28px; }
+    footer { margin-top: 32px; font-size: .85rem; opacity: .75; }
+    footer a { color: inherit; }
+  </style>
+</head>
+<body>
+  <main>
+    <h1>Cloud Switching Kit</h1>
+    <p class="lead">What leaving AWS, Azure or Google Cloud costs in data transfer, how to get it waived, what the EU Data Act
+      says, and a switching notice you can send today. Runs in your browser; nothing you type is sent anywhere.</p>
+    <div id="kit"></div>
+    <footer>
+      Open source: <a href="https://github.com/moveinfra/cloud-switching-kit">github.com/moveinfra/cloud-switching-kit</a> ·
+      Made by <a href="https://moveinfra.eu/">MoveInfra</a>, which moves companies to EU-owned clouds.
+    </footer>
+  </main>
+  <script type="module">
+    import { mount } from './kit/ui.js';
+    mount(document.getElementById('kit'));
+  </script>
+</body>
+</html>

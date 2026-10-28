@@ -1,0 +1,12 @@
+{
+  "name": "cloud-switching-kit",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Cloud exit fee calculator and EU Data Act switching notice generator",
+  "license": "Apache-2.0",
+  "scripts": {
+    "test": "node --test",
+    "update-data": "node scripts/update-data.mjs"
+  }
+}

@@ -1,0 +1,136 @@
+{
+  "checked": "2026-10-28",
+  "source": "https://github.com/moveinfra/eu-cloud-prices",
+  "usdPerEur": 1.1133,
+  "fxDate": "2026-10-28",
+  "providers": {
+    "aws": {
+      "name": "AWS",
+      "egress": {
+        "currency": "USD",
+        "unit": "GB",
+        "freeGBPerMonth": 100,
+        "tiers": [
+          {
+            "fromGB": 0,
+            "toGB": 10240,
+            "perGB": 0.09
+          },
+          {
+            "fromGB": 10240,
+            "toGB": 51200,
+            "perGB": 0.085
+          },
+          {
+            "fromGB": 51200,
+            "toGB": 153600,
+            "perGB": 0.07
+          },
+          {
+            "fromGB": 153600,
+            "toGB": null,
+            "perGB": 0.05
+          }
+        ],
+        "source": "https://pricing.us-east-1.amazonaws.com/offers/v1.0/aws/AWSDataTransfer/current/eu-central-1/index.json"
+      },
+      "exitProgram": {
+        "summary": "Free data transfer out to the internet for customers moving all their data off AWS (or all data of one service), granted as credits after a request to AWS Support. No need to close the account.",
+        "conditions": [
+          "\"you can contact AWS Support to ask for free DTO rates under this program\"",
+          "\"Eligible customers outside of the EU have 180 days to complete their move off of AWS.\" (update dated 10/8/26; originally 60 days)",
+          "\"move all of their data off of AWS from all Eligible Accounts or all of their data off of a particular AWS service\"",
+          "\"We don't require you to close your account or change your relationship with AWS in any way.\"",
+          "Eligible Account = payer account \"in good standing\"; repeat requests get \"additional scrutiny\".",
+          "EU customers switching under the EU Data Act follow the AWS EU Data Act Addendum (Section 2.3); UK customers the UK Customer Switching and Portability Addendum.",
+          "9/30/25 update removed the >100 GB/month requirement to contact support."
+        ],
+        "euDataAct": "EC2 pricing page: \"EU customers may request reduced data transfer rates for eligible use cases under the European Data Act.\"",
+        "source": "https://aws.amazon.com/blogs/aws/free-data-transfer-out-to-internet-when-moving-out-of-aws/"
+      }
+    },
+    "azure": {
+      "name": "Microsoft Azure",
+      "egress": {
+        "currency": "USD",
+        "unit": "GB",
+        "freeGBPerMonth": 100,
+        "tiers": [
+          {
+            "fromGB": 0,
+            "toGB": 10235,
+            "perGB": 0.087
+          },
+          {
+            "fromGB": 10235,
+            "toGB": 51195,
+            "perGB": 0.083
+          },
+          {
+            "fromGB": 51195,
+            "toGB": 153595,
+            "perGB": 0.07
+          },
+          {
+            "fromGB": 153595,
+            "toGB": null,
+            "perGB": 0.05
+          }
+        ],
+        "source": "https://prices.azure.com/api/retail/prices?$filter=serviceName eq 'Bandwidth' and armRegionName eq 'germanywestcentral'"
+      },
+      "exitProgram": {
+        "summary": "Free egress via the internet for customers leaving Azure for another cloud or on-premises; charges are credited at invoice level after you cancel all subscriptions.",
+        "conditions": [
+          "Create an Azure Support request with Subscription/Enrollment ID, planned start date and estimated data volume.",
+          "\"you have 60 days from the date you indicate as your start data transfer date to egress your data\"",
+          "\"If you need more than 60 days ... include an overview of your migration timeline in your initial Azure support request.\"",
+          "\"You must cancel all Azure subscriptions associated with your account after your data is transferred out before you can request your invoice-level credit.\"",
+          "\"You receive credit for a maximum of 60 calendar days of egress charges\" (from the start date).",
+          "UK billing address + UK datacenters: 180 days, and single services can be exited."
+        ],
+        "euDataAct": null,
+        "source": "https://learn.microsoft.com/en-us/azure/cost-management-billing/manage/cancel-azure-subscription#what-data-transfer-fees-are-applied-when-moving-all-data-off-azure",
+        "note": "No EU Data Act specific program found on the fetched pages. Announcement: https://azure.microsoft.com/updates/now-available-free-data-transfer-out-to-internet-when-leaving-azure/ (page body did not render in fetch)."
+      }
+    },
+    "gcp": {
+      "name": "Google Cloud",
+      "egress": {
+        "currency": "USD",
+        "unit": "GiB",
+        "freeGBPerMonth": 0,
+        "tiers": [
+          {
+            "fromGB": 0,
+            "toGB": 1024,
+            "perGB": 0.12
+          },
+          {
+            "fromGB": 1024,
+            "toGB": 10240,
+            "perGB": 0.11
+          },
+          {
+            "fromGB": 10240,
+            "toGB": null,
+            "perGB": 0.08
+          }
+        ],
+        "source": "https://cloud.google.com/vpc/network-pricing"
+      },
+      "exitProgram": {
+        "summary": "Free network data transfer when migrating all workloads and data of a Google Cloud service to another provider or on-premises, via an Exit Notice; the agreement for that service is then terminated.",
+        "conditions": [
+          "Submit an Exit Notice form; within 14 days a Billing Support agent is assigned.",
+          "After that, a 30-day Initiation Period to start migrating, then a Migration Period of at least 30 days (extendable).",
+          "\"You are not eligible for the free data transfer program if you are not terminating your agreement for the relevant Google Cloud services.\"",
+          "\"customers are not permitted to migrate only a portion of a given Google Cloud service under the program.\"",
+          "Submit a Completion Notice after the Migration Period (max 180 days after it ends); termination follows after at least 30 days."
+        ],
+        "euDataAct": "For partial moves, European customers may use Data Transfer Essentials (multicloud traffic), \"initially offered at no charge\" (https://cloud.google.com/data-transfer-essentials/docs/overview).",
+        "source": "https://cloud.google.com/exit-cloud"
+      }
+    }
+  }
+}
